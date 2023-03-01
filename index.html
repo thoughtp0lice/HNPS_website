@@ -252,7 +252,7 @@ the proposed framework can synthesize programs
 that are significantly longer and more complex than the programs considered in prior program synthesis works.</p>
 <hr>
 <h2 id="method-overview">Method Overview</h2>
-<p><img src="/model.png" alt="model"></p>
+<p><img src="https://thoughtp0lice.github.io/hnps_web/model.png" alt="model"></p>
 <p>In this work, we aim to develop a program synthesis framework
 that can scale up to longer programs
 which can induce more complex behaviors.
@@ -266,7 +266,7 @@ to form longer programs with more complex behaviors.</p>
 <p>This training schema allows for generating programs via program-by-program composition rather than token-by-token composition, thus enabling additional supervision through the task embeddings instead of only maximizing the likelihood based on produced program tokens.</p>
 <hr>
 <h2 id="string-transformation">String Transformation</h2>
-<p><img src="/string_trans.png" alt="string Transformation"></p>
+<p><img src="https://thoughtp0lice.github.io/hnps_web/string_trans.png" alt="string Transformation"></p>
 <p>Programs considered in this work are constructed based on a Domain Specific Language (DSL) for string transformation tasks. The DSL establishes the possible space of valid programs as well as en- ables sampling programs. An example of our DSL is shown in the figure above. The DSL defines a set of operations
 (e.g. <code>SubStr(k₁, k₂)</code>, <code>Concat(e₁, e₂, ...)</code>,
 <code>ConstStr(s)</code>)
@@ -278,16 +278,16 @@ and produces an output string <code>J!</code>.</p>
 <hr>
 <h2 id="experiments">Experiments</h2>
 <h3 id="performance-on-unseen-test-programs">Performance on Unseen Test Programs</h3>
-<p><img src="/unseen_prog_performance.png" alt="unseen program proformance">
+<p><img src="https://thoughtp0lice.github.io/hnps_web/unseen_prog_performance.png" alt="unseen program proformance">
 We evaluate execution accuracy over unseen test programs in our dataset $D_\text{long}$, where execution accuracy refers to the percent of synthesized programs that produce the correct output for all given input strings. The x-axis represents the length of the ground truth program (number of program tokens). The results are shown in the table above.</p>
-<p><img src="/relative_performance.png#center" alt="relative_performance"></p>
+<p><img src="https://thoughtp0lice.github.io/hnps_web/relative_performance.png#center" alt="relative_performance"></p>
 <p>We additionally provide a visualization of relative performance on different program lengths in the figure above where we normalize the execution accuracy of each method by scaling the accuracy of HNPS to 1.0.</p>
 <p>We observe that HNPS can generalize especially well to longer program with more than 40 tokens compare to baseline methods.</p>
 <h3 id="analyzing-the-task-embedding-space">Analyzing the Task Embedding Space</h3>
-<p><img src="/embedding_space.png#center" alt="pca_embedding_space"></p>
+<p><img src="https://thoughtp0lice.github.io/hnps_web/embedding_space.png#center" alt="pca_embedding_space"></p>
 <p>We provide a visualization of the tasks embeddings of 5 programs randomly drawn from the test set of $D_\text{short}$. Dimensionality reduction is performed with principal component analysis (PCA) in order to project the task embeddings to a 2D space. We represent one embedding of an I/O pair with a dot in the figure and represent different programs using various colors. As shown in the figure, I/O pairs from the same program are clustered together and I/O pairs from different programs are separable, demonstrating that a meaningful embedding space is able to be learned and leveraged in our training procedure.</p>
 <h3 id="ablating-the-program-embedding-loss">Ablating the Program Embedding Loss</h3>
-<p><img src="/emb_loss_data_size.png" alt="emb_loss"></p>
+<p><img src="https://thoughtp0lice.github.io/hnps_web/emb_loss_data_size.png" alt="emb_loss"></p>
 <p>In Table above we compare HNPS, our full method, and HNPS-PT, our method without the program embedding loss $\mathcal{L}^{\text{PE}}$, on $D_\text{long}$ as a function of the size of the composed program dataset. When trained with the full $D_\text{composed}$, HNPS only performs better than HNPS-PT on programs longer than 40 tokens. However, when using 50% or 25% of the data, HNPS&rsquo;s performance become significantly better than HNPS-PT across all program lengths. This suggests that the supervision from program embedding loss is particularly effective when data is scarce.</p>
 
 
