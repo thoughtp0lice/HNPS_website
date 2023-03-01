@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta name="generator" content="Hugo 0.110.0">
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://thoughtp0lice.github.io/hnps_web/images/favicon.png" />
+<title>Hierarchical Neural Program Synthesis</title>
+<meta name="title" content="Hierarchical Neural Program Synthesis" />
+<meta name="description" content="Hugo &#43; Bear = :heart:" />
+<meta name="keywords" content="" />
+
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="Hugo &#43; Bear = :heart:" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://thoughtp0lice.github.io/hnps_web/" /><meta property="og:image" content="https://thoughtp0lice.github.io/hnps_web/images/share.png"/><meta property="og:site_name" content="Hugo ʕ•ᴥ•ʔ Bear" />
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://thoughtp0lice.github.io/hnps_web/images/share.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Hugo &#43; Bear = :heart:"/>
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Hugo &#43; Bear = :heart:">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <link rel="alternate" type="application/rss+xml" href="https://thoughtp0lice.github.io/hnps_web/index.xml" title="Hierarchical Neural Program Synthesis" />
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+  img[src$='#center']
+  {
+      display: block;
+      margin: 0.7rem auto;  
+       
+  }
+
+
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+          delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false}
+          ]
+      });
+  });
+</script>
+</head>
+
+<body>
+  <header></header>
+  <main>
+<h1 id="hierarchical-neural-program-synthesis">Hierarchical Neural Program Synthesis</h1>
+<p><a href="https://thoughtp0lice.github.io/">Linghan Zhong</a>¹, <a href="https://www.ryanlindeborg.com/">Ryan Lindeborg</a>¹, <a href="https://jesbu1.github.io/">Jesse Zhang</a>¹, <a href="https://clvrai.com/web_lim/">Joseph J. Lim</a>² ³, <a href="https://shaohua0116.github.io/">Shao-Hua Sun</a>⁴ <!-- raw HTML omitted -->
+¹USC, ²KAIST, ³AI Advisor at Naver AI Lab, ⁴National Taiwan University</p>
+<p>Recent works in program synthesis have demonstrated encouraging results
+in a variety of domains such as
+string transformation, tensor manipulation,
+and describing behaviors of embodied agents.
+Most existing program synthesis methods
+are designed to synthesize programs from scratch,
+generating a program token by token, line by line.
+This fundamentally prevents these methods from scaling up to synthesize programs that are longer or more complex.
+In this work, we present a scalable program synthesis framework
+that instead synthesizes a program by hierarchically composing programs.
+The experimental results demonstrate that
+the proposed framework can synthesize programs
+that are significantly longer and more complex than the programs considered in prior program synthesis works.</p>
+<hr>
+<h2 id="method-overview">Method Overview</h2>
+<p><img src="/model.png" alt="model"></p>
+<p>In this work, we aim to develop a program synthesis framework
+that can scale up to longer programs
+which can induce more complex behaviors.
+Our key idea is to compose shorter programs with simple behaviors
+to form longer programs with more complex behaviors.</p>
+<p>To this end, we introduce a two stage training framework:</p>
+<ol>
+<li><strong>Learning program embedding stage</strong>: We construct a <em>short program dataset</em> that contains short programs with their corresponding input/output pairs. Then, we learn a task embedding space that represents the space of short program behaviors, along with a program decoder that can decode a task embedding into a short program.</li>
+<li><strong>Learning program embedding stage</strong>: We create a <em>composed program dataset</em> in which the composed programs are generated by sequentially composing short programs. We then train a &ldquo;program composer&rdquo; on this dataset to produce a sequence of task embeddings, each representing a latent short program, which are decoded by the program decoder into short programs and sequentially composed to yield the synthesized program.</li>
+</ol>
+<p>This training schema allows for generating programs via program-by-program composition rather than token-by-token composition, thus enabling additional supervision through the task embeddings instead of only maximizing the likelihood based on produced program tokens.</p>
+<hr>
+<h2 id="string-transformation">String Transformation</h2>
+<p><img src="/string_trans.png" alt="string Transformation"></p>
+<p>Programs considered in this work are constructed based on a Domain Specific Language (DSL) for string transformation tasks. The DSL establishes the possible space of valid programs as well as en- ables sampling programs. An example of our DSL is shown in the figure above. The DSL defines a set of operations
+(e.g. <code>SubStr(k₁, k₂)</code>, <code>Concat(e₁, e₂, ...)</code>,
+<code>ConstStr(s)</code>)
+and their parameters, such as numbers (e.g <code>k₁, k₂</code>) and strings (e.g <code>s</code>).
+A program consists of a sequence of expressions which would output a sub-string of the input string or a constant string. The output of the expressions would then be concatenated to produce the final output string of the program.
+For example, a program <code>Concat(SubStr(0, 1), ConstStr(&quot;!&quot;))</code>
+takes an input string <code>John-01</code>
+and produces an output string <code>J!</code>.</p>
+<hr>
+<h2 id="experiments">Experiments</h2>
+<h3 id="performance-on-unseen-test-programs">Performance on Unseen Test Programs</h3>
+<p><img src="/unseen_prog_performance.png" alt="unseen program proformance">
+We evaluate execution accuracy over unseen test programs in our dataset $D_\text{long}$, where execution accuracy refers to the percent of synthesized programs that produce the correct output for all given input strings. The x-axis represents the length of the ground truth program (number of program tokens). The results are shown in the table above.</p>
+<p><img src="/relative_performance.png#center" alt="relative_performance"></p>
+<p>We additionally provide a visualization of relative performance on different program lengths in the figure above where we normalize the execution accuracy of each method by scaling the accuracy of HNPS to 1.0.</p>
+<p>We observe that HNPS can generalize especially well to longer program with more than 40 tokens compare to baseline methods.</p>
+<h3 id="analyzing-the-task-embedding-space">Analyzing the Task Embedding Space</h3>
+<p><img src="/embedding_space.png#center" alt="pca_embedding_space"></p>
+<p>We provide a visualization of the tasks embeddings of 5 programs randomly drawn from the test set of $D_\text{short}$. Dimensionality reduction is performed with principal component analysis (PCA) in order to project the task embeddings to a 2D space. We represent one embedding of an I/O pair with a dot in the figure and represent different programs using various colors. As shown in the figure, I/O pairs from the same program are clustered together and I/O pairs from different programs are separable, demonstrating that a meaningful embedding space is able to be learned and leveraged in our training procedure.</p>
+<h3 id="ablating-the-program-embedding-loss">Ablating the Program Embedding Loss</h3>
+<p><img src="/emb_loss_data_size.png" alt="emb_loss"></p>
+<p>In Table above we compare HNPS, our full method, and HNPS-PT, our method without the program embedding loss $\mathcal{L}^{\text{PE}}$, on $D_\text{long}$ as a function of the size of the composed program dataset. When trained with the full $D_\text{composed}$, HNPS only performs better than HNPS-PT on programs longer than 40 tokens. However, when using 50% or 25% of the data, HNPS&rsquo;s performance become significantly better than HNPS-PT across all program lengths. This suggests that the supervision from program embedding loss is particularly effective when data is scarce.</p>
+
+
+  </main>
+  <footer>
+</footer>
+
+    
+</body>
+
+</html>
