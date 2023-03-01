@@ -5,6 +5,9 @@ baseURL = "https://thoughtp0lice.github.io/hnps_web/"
 # The name of this wonderful theme ;-).
 theme = 'hugo-bearblog'
 
+# Images for github pages
+canonifyURLs = true
+
 # Basic metadata configuration for your blog.
 title = "Hierarchical Neural Program Synthesis"
 # author = "Jane Doe"
